@@ -1,0 +1,63 @@
+/*
+ * @Author: VoldikSS
+ * @Date: 2018-10-20 08:50:00
+ * @Last Modified by: VoldikSS
+ * @Last Modified time: 2018-10-20 08:50:01
+ */
+
+body {
+    width: 150px;
+    height: 100px;
+    margin: 1px;
+    border: 1px;
+    padding: 5px;
+    background-color: #ededed;
+}
+
+#title {
+    margin-bottom: 5px;
+    padding: 2px;
+    background-color: rgba(25, 149, 61, 0.6);
+    border: #4285f4;
+    border-radius: 2.5px;
+}
+
+#name {
+    font-family: "微软雅黑", "文泉驿微米黑", Arial, "黑体", "宋体", serif;
+    font-weight: bold;
+    color: white;
+    float: right;
+    margin-right: 10px;
+}
+
+#manage, #reminde {
+    margin: 3px;
+    padding: 3px;
+    font-size: 15px;
+    color: #000;
+}
+
+#manager, #reminder {
+    margin-left: 30px;
+    color: white;
+    background-color: #4285f4;
+    border: #4285f4;
+    border-radius: 2.5px;
+    text-decoration: none;
+    line-height: 20px;
+    display: inline-block;
+    cursor: hand;
+    font-style: normal;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 4px 0 rgba(0, 0, 0, 0.2);;
+}
+
+#manager:hover, #reminder:hover {
+    background-color: #2062f4;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
