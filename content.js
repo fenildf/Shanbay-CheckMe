@@ -2,29 +2,67 @@
  * @Author: VoldikSS
  * @Date: 2018-10-15 16:02:13
  * @Last Modified by: VoldikSS
- * @Last Modified time: 2018-10-20 08:51:12
+ * @Last Modified time: 2018-10-20 09:26:19
  */
 
 // Todo: 提醒打卡，入口做在popup页面内，https://www.shanbay.com/team/members/#p1
 
 !function () {
+    // get members table
+    let members_table = document.getElementById("members");
+    let members_table_body = document.querySelector("#members tbody");
+
+    // create members table
+    let dispel_members_table = document.createElement("table");
+    dispel_members_table.setAttribute("id", "dispel_members");
+    dispel_members_table.setAttribute("class", "table table-bordered");
+    dispel_members_table.appendChild(document.querySelector("#members thead").cloneNode(true));
+    document.getElementById("dismiss_container").insertBefore(dispel_members_table, members_table);
+
+    // create tbody
+    let dispel_members_table_body = document.createElement("tbody");
+    dispel_members_table.appendChild(dispel_members_table_body);
+
+    // table title
+    let dispel_members_table_title = document.createElement("caption");
+    dispel_members_table_title.innerText = "续命失败，-1s!!!";
+    dispel_members_table.insertBefore(dispel_members_table_title, document.querySelector("#dispel_members tbody")[0]);
+
+    // get the number of pages
+    let pagination = document.getElementsByClassName("pagination")[0];
+    let pages = pagination.getElementsByClassName("endless_page_link");
+    let page_number = parseInt(pages[pages.length - 2].innerHTML);
+
+    // loading page
+    let loading = document.createElement("div");
+    loading.setAttribute("id", "loading_container");
+    loading.innerHTML = "<h1>正在续命，请稍后......</h1>";
+    document.body.appendChild(loading);
+
+    // create button: Check Me!
+    let check_btn = document.createElement("button");
+    check_btn.innerText = "一键查卡";
+    check_btn.setAttribute("id", "check_btn");
+    check_btn.addEventListener("click", CheckMe);
+    document.querySelector(".page-header").appendChild(check_btn);
+
     // check and check, check every one!!!
     function CheckMe() {
         // Loading
         let loading = document.getElementById("loading_container");
         loading.style.display = "block";
-        
+
         // display dispel members table
         dispel_members_table.style.display = "table";
-        
+
         // restore the expire contents
         members_table_body.innerHTML = "";
         dispel_members_table_body.innerHTML = "";
-        
+
         // Post(page_number);
         Post(page_number);
     }
-    
+
     /**
      * @return {boolean}
      */
@@ -47,14 +85,13 @@
         }
         return false;
     }
-    
+
     /**
      * @return {number}
      */
     // use recursion here
     function Post(page_index) {
         if (page_index === 0) {
-            console.log("All posts done");
             // hide the loading page, maybe some improvements...
             document.getElementById("loading_container").style.display = "none";
             // remove pagination at the bottom
@@ -89,46 +126,6 @@
                 }
             }
         }
-    }
-    
-    if (document.readyState !== "loading") {
-        // get members table
-        var members_table = document.getElementById("members");
-        var members_table_body = document.querySelector("#members tbody");
-        
-        // create members table
-        var dispel_members_table = document.createElement("table");
-        dispel_members_table.setAttribute("id", "dispel_members");
-        dispel_members_table.setAttribute("class", "table table-bordered");
-        dispel_members_table.appendChild(document.querySelector("#members thead").cloneNode(true));
-        document.getElementById("dismiss_container").insertBefore(dispel_members_table, members_table);
-        
-        // create tbody
-        var dispel_members_table_body = document.createElement("tbody");
-        dispel_members_table.appendChild(dispel_members_table_body);
-        
-        // table title
-        var dispel_members_table_title = document.createElement("caption");
-        dispel_members_table_title.innerText = "续命失败，-1s!!!";
-        dispel_members_table.insertBefore(dispel_members_table_title, document.querySelector("#dispel_members tbody")[0]);
-        
-        // get the number of pages
-        var pagination = document.getElementsByClassName("pagination")[0];
-        var pages = pagination.getElementsByClassName("endless_page_link");
-        var page_number = parseInt(pages[pages.length - 2].innerHTML);
-        
-        // loading page
-        var loading = document.createElement("div");
-        loading.setAttribute("id", "loading_container");
-        loading.innerHTML = "<h1>正在续命，请稍后......</h1>";
-        document.body.appendChild(loading);
-        
-        // create button: Check Me!
-        var check_btn = document.createElement("button");
-        check_btn.innerText = "一键查卡";
-        check_btn.setAttribute("id", "check_btn");
-        check_btn.addEventListener("click", CheckMe);
-        document.querySelector(".page-header").appendChild(check_btn);
     }
 }();
 
