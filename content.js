@@ -2,7 +2,7 @@
  * @Author: VoldikSS
  * @Date: 2018-10-15 16:02:13
  * @Last Modified by: VoldikSS
- * @Last Modified time: 2018-10-20 09:26:19
+ * @Last Modified time: 2018-10-20 20:23:15
  */
 
 // Todo: 提醒打卡，入口做在popup页面内，https://www.shanbay.com/team/members/#p1
@@ -71,15 +71,19 @@
         if (role !== "2") {
             return false;
         }
+        // 三天以内断卡则踢
         else if (parseInt(days) <= 3) {
-            return (checked1 === "未打卡");
+            return (checked2 === "未打卡")
         }
-        else if (parseInt(days) <= 7) {
-            return (checked1 === "未打卡" && checked2 === "未打卡")
+        // 七天以内两天不打卡则踢
+        else if (parseInt(days) <= 7 && parseFloat(rate) < 100) {
+            return (checked2 === "未打卡")
         }
+        // 后期打卡率低于85%则踢
         else if (parseFloat(rate) < 85.0) {
             return true;
         }
+        // 打卡率低于95%者连续两天不打卡则踢
         else if (parseFloat(rate) < 95.0) {
             return (checked1 === "未打卡" && checked2 === "未打卡")
         }

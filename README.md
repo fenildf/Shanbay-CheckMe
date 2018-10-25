@@ -7,7 +7,7 @@ The present group members living rule is [here](https://www.shanbay.com/team/det
 
 ## Installation
 
-- If you has [VPN](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF), install from Webstore [here](https://chrome.google.com/webstore/detail/shanbay-checkme/lkfbgfmcjklnaaachgilcjkfpebjooba)
+- If you have [VPN](https://zh.wikipedia.org/wiki/%E8%99%9B%E6%93%AC%E7%A7%81%E4%BA%BA%E7%B6%B2%E8%B7%AF), install from Webstore [here](https://chrome.google.com/webstore/detail/shanbay-checkme/lkfbgfmcjklnaaachgilcjkfpebjooba)
 - Else please refer to this [guide](https://github.com/VoldikSS/HelloElectsys#%E5%AE%89%E8%A3%85)
 
 ## Preview
